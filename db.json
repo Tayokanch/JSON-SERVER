@@ -1,0 +1,62 @@
+{
+  "dogs": [
+    {
+      "name": "smart",
+      "breed": "Germanshepard",
+      "id": 1,
+      "isGood": true
+    },
+    {
+      "name": "under",
+      "breed": "gorge",
+      "isGood": true,
+      "id": 2
+    },
+    {
+      "name": "brownie",
+      "breed": "Germanshepard",
+      "isGood": true,
+      "id": 3
+    },
+    {
+      "name": "yesa",
+      "breed": "Pitbull",
+      "isGood": false,
+      "id": 4
+    },
+    {
+      "name": "shouting",
+      "breed": "Calabar",
+      "isGood": false,
+      "id": 5
+    },
+    {
+      "name": "Jago",
+      "breed": "Pitbull",
+      "isGood": false,
+      "id": 6
+    },
+    {
+      "name": "jago",
+      "breed": "Americanbreed",
+      "isGood": false,
+      "id": 7
+    },
+    {
+      "name": "Jimmy",
+      "breed": "french",
+      "isGood": true,
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

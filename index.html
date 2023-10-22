@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Rest API</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script>
+
+</head>
+<body>
+    <h1>LOCAL REST API</h1>
+    <h2>DOGS</h2>
+    <section>
+        <h3>CREATE</h3>
+        <form action="" id="new-dog">
+            <label>Name:
+                <input type="text" name="name">
+            </label>
+            <br>
+            <label> Breed:
+                <input type="text" name="breed">
+            </label>
+            <br>
+            <label> is Good Dog?
+                <input type="checkbox">
+            </label>
+            <br>
+            <input type="submit" value="Add New Dog">
+         
+        </form>
+    </section>
+
+    <section>
+        <h3>READ</h3>
+        <div id="dogs"></div>
+    </section>
+</body>
+</html>
