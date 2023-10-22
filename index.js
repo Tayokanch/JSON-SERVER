@@ -5,7 +5,21 @@ const state = {
     dogs: []
 };
 
-//Six
+const deleteDogRequest = (id) => {
+    const options = {
+        method: 'DELETE'
+    };
+
+    fetch(`${root}/dogs/${id}`, options)
+        .then((response) => response.json())
+        .then(() => {
+            renderDog();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+};
+
 const editDogIsGood = (id, isGood) => {
     const data = {
         isGood: !isGood
@@ -20,16 +34,13 @@ const editDogIsGood = (id, isGood) => {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            // Optionally, you can update your local state and re-render the dogs here
         })
         .catch((error) => {
             console.error('Error:', error);
         });
 };
 
-//Two
 const renderDog = () => {
-    // Clear the existing dogContainer
     dogContainer.innerHTML = '';
 
     state.dogs.forEach((dog) => {
@@ -40,38 +51,42 @@ const renderDog = () => {
         breed.innerText = `Breed: ${dog.breed}`;
         const isGood = document.createElement('input');
         isGood.type = 'checkbox';
-        isGood.checked = dog.isGood; // If the checkbox is checked isGood = true , else is good will be false
+        isGood.checked = dog.isGood;
         const editButton = document.createElement('button');
         editButton.innerText = 'Update isGood Status';
 
-        //Seven
         dogForm.addEventListener('submit', (e) => {
             e.preventDefault();
             editDogIsGood(dog.id, dog.isGood);
+        });
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete Dog';
+        deleteButton.type = 'button';
+
+        deleteButton.addEventListener('click', () => {
+            deleteDogRequest(dog.id);
         });
 
         dogForm.append(name);
         dogForm.append(breed);
         dogForm.append(isGood);
         dogForm.append(editButton);
+        dogForm.append(deleteButton);
         dogContainer.append(dogForm);
     });
 };
 
-//One
-// Fetch dogs and render them
 fetch(`${root}/dogs`)
     .then((response) => response.json())
     .then((data) => {
         state.dogs = data;
-        renderDog(); //There
+        renderDog();
     })
     .catch((error) => {
         console.error('Error:', error);
     });
 
-
-//four
 newDogForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -87,11 +102,10 @@ newDogForm.addEventListener('submit', (e) => {
         body: JSON.stringify(data)
     };
 
-    // After posting a new dog, refetch the data and render
     fetch(`${root}/dogs`, options)
         .then((response) => response.json())
         .then(() => {
-            renderDog(); //five
+            renderDog();
         })
         .catch((error) => {
             console.error('Error:', error);
