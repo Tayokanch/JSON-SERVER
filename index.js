@@ -5,6 +5,7 @@ const state = {
     dogs: []
 };
 
+///Eight Delete
 const deleteDogRequest = (id) => {
     const options = {
         method: 'DELETE'
@@ -20,6 +21,7 @@ const deleteDogRequest = (id) => {
         });
 };
 
+//Six Edit
 const editDogIsGood = (id, isGood) => {
     const data = {
         isGood: !isGood
@@ -40,6 +42,7 @@ const editDogIsGood = (id, isGood) => {
         });
 };
 
+//Two 
 const renderDog = () => {
     dogContainer.innerHTML = '';
 
@@ -57,7 +60,7 @@ const renderDog = () => {
 
         dogForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            editDogIsGood(dog.id, dog.isGood);
+            editDogIsGood(dog.id, dog.isGood); //Seven
         });
 
         const deleteButton = document.createElement('button');
@@ -65,7 +68,7 @@ const renderDog = () => {
         deleteButton.type = 'button';
 
         deleteButton.addEventListener('click', () => {
-            deleteDogRequest(dog.id);
+            deleteDogRequest(dog.id); //  Nine
         });
 
         dogForm.append(name);
@@ -77,16 +80,18 @@ const renderDog = () => {
     });
 };
 
+///One fetch 
 fetch(`${root}/dogs`)
     .then((response) => response.json())
     .then((data) => {
         state.dogs = data;
-        renderDog();
+        renderDog(); //Three
     })
     .catch((error) => {
         console.error('Error:', error);
     });
 
+    //Four Post Request
 newDogForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -105,7 +110,7 @@ newDogForm.addEventListener('submit', (e) => {
     fetch(`${root}/dogs`, options)
         .then((response) => response.json())
         .then(() => {
-            renderDog();
+            renderDog();//Five
         })
         .catch((error) => {
             console.error('Error:', error);
